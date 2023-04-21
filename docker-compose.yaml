@@ -1,0 +1,26 @@
+---
+version: '3'
+
+services:
+  app:
+    build:
+      context: ./
+      args:
+        - APP_ENV=dev
+      dockerfile: ./docker/file/Dockerfile
+    container_name: http-app
+    volumes:
+      - ./:/var/www/app:delegated
+    env_file:
+      - config/secrets/.env.app
+
+  nginx:
+    image: nginx:alpine
+    container_name: http-server
+    volumes:
+      - ./:/var/www/app:delegated
+      - ./docker/php/server/server.conf:/etc/nginx/conf.d/server.conf:delegated
+    links:
+      - app
+    ports:
+      - "8080:80"

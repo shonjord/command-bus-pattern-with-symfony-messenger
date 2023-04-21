@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+env_file_dir=config/secrets
+env_file=${env_file_dir}/.env.app
+
+if [ ! -f ${env_file} ]
+then
+  mkdir ${env_file_dir}
+  cp docker/env/.env.app_dist ${env_file}
+fi

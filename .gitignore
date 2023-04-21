@@ -1,0 +1,18 @@
+/.idea
+*.cache
+*.log
+config/secrets/
+/config/packages/local/
+/config/*_local.yaml
+
+###> symfony/framework-bundle ###
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+###> symfony/phpunit-bridge ###
+.phpunit
+.phpunit.result.cache
+/phpunit.xml
+.php-cs-fixer.cache
+###< symfony/phpunit-bridge ###
